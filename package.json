@@ -1,0 +1,31 @@
+{
+  "name": "goalsync-be",
+  "version": "0.0.0",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js",
+    "dev": "export NODE_ENV=local && ts-node-dev src/index.ts --respawn --transpileOnly"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nullsploit01/goalsync-be.git"
+  },
+  "author": "nullsploit01",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nullsploit01/goalsync-be/issues"
+  },
+  "homepage": "https://github.com/nullsploit01/goalsync-be#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.9.0",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}
