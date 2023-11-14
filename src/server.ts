@@ -2,18 +2,22 @@ import cors from 'cors'
 import express from 'express'
 import { onRequest } from 'firebase-functions/v2/https'
 
-import { Environment } from './config/environment'
-import { errorLogger, httpLogger, logger } from './config/logger'
+import { Environment, errorLogger, httpLogger, logger } from './config'
+import { NotFoundError } from './errors'
+import { errorHandler } from './middlewares'
 import { TeamsRouter } from './routes'
 
 const app = express()
 
 app.use(cors())
-
 app.use(httpLogger)
 app.use(errorLogger)
 
 app.use('/teams', TeamsRouter)
+
+app.use('*', () => {
+  throw new NotFoundError()
+})
 
 if (Environment.nodeEnv === 'local') {
   app.listen(Environment.port, () => {
@@ -22,5 +26,7 @@ if (Environment.nodeEnv === 'local') {
     )
   })
 }
+
+app.use(errorHandler)
 
 exports.api = onRequest(app)
