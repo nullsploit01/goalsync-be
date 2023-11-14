@@ -1,11 +1,11 @@
 {
   "name": "goalsync-be",
   "version": "0.0.0",
-  "main": "dist/index.js",
+  "main": "dist/server.js",
   "scripts": {
     "build": "tsc",
-    "start": "npm run build && node dist/index.js",
-    "dev": "export NODE_ENV=local && ts-node-dev src/index.ts --respawn --transpileOnly",
+    "start": "npm run build && node dist/server.js",
+    "dev": "export NODE_ENV=local && ts-node-dev src/server.ts --respawn --transpileOnly",
     "deploy": "firebase deploy --only \"functions,hosting\"",
     "prepare": "husky install"
   },
