@@ -13,8 +13,8 @@ module.exports = {
     '<THIRD_PARTY_MODULES>',
     '^@apollo/(.*)$',
     'src/(.*)$',
-    '^[./]', // Absolute path imports
+    '^[./]' // Absolute path imports
   ],
 
-  plugins: ['@trivago/prettier-plugin-sort-imports'],
-};
+  plugins: ['@trivago/prettier-plugin-sort-imports']
+}
