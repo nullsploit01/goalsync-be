@@ -22,10 +22,7 @@ export const logger = createLogger({
 if (process.env.NODE_ENV !== 'production') {
   logger.add(
     new winston.transports.Console({
-      format: format.combine(
-        format.colorize({ all: true }), // Enable colorization
-        format.simple() // Simple log format
-      )
+      format: format.combine(format.colorize({ all: true }), format.simple())
     })
   )
 }

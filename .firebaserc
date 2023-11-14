@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "goalsync",
+    "goalsync": "goalsync-d26b9"
+  }
+}
