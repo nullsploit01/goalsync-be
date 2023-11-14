@@ -2,7 +2,7 @@ import { Environment } from '../../config'
 import { httpClient } from '../axios'
 
 const rapidApiHost = Environment.rapidApi.host
-const rapidApiKey = Environment.rapidApi.host
+const rapidApiKey = Environment.rapidApi.key
 const rapidApiUrl = Environment.rapidApi.url
 
 if (!rapidApiUrl || !rapidApiHost || !rapidApiKey) {
