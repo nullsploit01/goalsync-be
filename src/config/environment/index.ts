@@ -7,5 +7,10 @@ dotenv.config({ path: envFilePath })
 
 export const Environment = {
   port: process.env.PORT || 5000,
-  nodeEnv: process.env.NODE_ENV
+  nodeEnv: process.env.NODE_ENV,
+  rapidApi: {
+    key: process.env.RAPIDAPI_KEY,
+    url: process.env.RAPIDAPI_URL,
+    host: process.env.RAPIDAPI_HOST
+  }
 }
