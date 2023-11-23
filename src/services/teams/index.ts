@@ -1,16 +1,18 @@
 import { rapidApiClient } from '../../clients'
+import { IAPIResponse } from '../../interfaces/rapid-api'
+import { IStatistics } from '../../interfaces/rapid-api/teams'
 
 class TeamsService {
-  statistics = async () => {
+  statistics = async (league: string, season: string, team: string) => {
     const { data } = await rapidApiClient.get('/teams/statistics', {
       params: {
-        league: '39',
-        season: '2020',
-        team: '33'
+        league: league,
+        season: season,
+        team: team
       }
     })
 
-    return data
+    return data as IAPIResponse<IStatistics>
   }
 }
 
