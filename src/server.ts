@@ -5,7 +5,7 @@ import { onRequest } from 'firebase-functions/v2/https'
 import { Environment, errorLogger, httpLogger, logger } from './config'
 import { NotFoundError } from './errors'
 import { errorHandler } from './middlewares'
-import { LeaguesRouter, TeamsRouter } from './routes'
+import { LeaguesRouter, StandingsRouter, TeamsRouter } from './routes'
 
 const app = express()
 
@@ -15,6 +15,7 @@ app.use(errorLogger)
 
 app.use('/teams', TeamsRouter)
 app.use('/leagues', LeaguesRouter)
+app.use('/standings', StandingsRouter)
 
 app.use('*', () => {
   throw new NotFoundError()

@@ -7,7 +7,7 @@ export interface IPaging {
   total: number
 }
 
-export interface IAPIResponse<T> {
+export interface IRapidAPIResponse<T> {
   get: string
   response: T | T[]
   results: number

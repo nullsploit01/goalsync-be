@@ -1,5 +1,5 @@
 import { rapidApiClient } from '../../clients'
-import { IAPIResponse } from '../../interfaces/rapid-api'
+import { IRapidAPIResponse } from '../../interfaces/rapid-api'
 import { ICountry, IStatistics, ITeamInfo } from '../../interfaces/rapid-api/teams'
 
 class TeamsService {
@@ -12,7 +12,7 @@ class TeamsService {
       }
     })
 
-    return data as IAPIResponse<IStatistics>
+    return data as IRapidAPIResponse<IStatistics>
   }
 
   info = async (id: string) => {
@@ -22,7 +22,7 @@ class TeamsService {
       }
     })
 
-    return data as IAPIResponse<ITeamInfo>
+    return data as IRapidAPIResponse<ITeamInfo>
   }
 
   seasons = async (team: string) => {
@@ -32,12 +32,12 @@ class TeamsService {
       }
     })
 
-    return data as IAPIResponse<number[]>
+    return data as IRapidAPIResponse<number[]>
   }
 
   countries = async () => {
     const { data } = await rapidApiClient.get('/teams/countries')
-    return data as IAPIResponse<ICountry>
+    return data as IRapidAPIResponse<ICountry>
   }
 }
 
