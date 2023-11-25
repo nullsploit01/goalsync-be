@@ -1,5 +1,5 @@
+import { IControllerMethod } from '../../interfaces/controllers'
 import { leaguesService } from '../../services'
-import { IControllerMethod } from '../interface'
 
 class LeaguesController {
   leagues: IControllerMethod = async (req, res, next) => {
