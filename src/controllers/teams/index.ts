@@ -12,7 +12,8 @@ class TeamsController {
       const stats = await teamsServcie.statistics(
         league.toString(),
         season.toString(),
-        team.toString()
+        team.toString(),
+        req.originalUrl
       )
 
       return res.json(stats)
@@ -27,7 +28,7 @@ class TeamsController {
 
       if (!id) throw new RequiredParamsError()
 
-      const teamInfo = await teamsServcie.info(id.toString())
+      const teamInfo = await teamsServcie.info(id.toString(), req.originalUrl)
       return res.json(teamInfo)
     } catch (error) {
       next(error)
@@ -40,7 +41,7 @@ class TeamsController {
 
       if (!team) throw new RequiredParamsError()
 
-      const teamInfo = await teamsServcie.seasons(team.toString())
+      const teamInfo = await teamsServcie.seasons(team.toString(), req.originalUrl)
       return res.json(teamInfo)
     } catch (error) {
       next(error)
@@ -49,7 +50,7 @@ class TeamsController {
 
   countries: IControllerMethod = async (req, res, next) => {
     try {
-      const countries = await teamsServcie.countries()
+      const countries = await teamsServcie.countries(req.originalUrl)
       return res.json(countries)
     } catch (error) {
       next(error)

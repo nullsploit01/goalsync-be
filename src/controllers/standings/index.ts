@@ -9,7 +9,11 @@ class StandingsController {
 
       if (!league || !season) throw new RequiredParamsError()
 
-      const standings = await standingsService.standings(season.toString(), league.toString())
+      const standings = await standingsService.standings(
+        season.toString(),
+        league.toString(),
+        req.originalUrl
+      )
       return res.json(standings)
     } catch (error) {
       next(error)

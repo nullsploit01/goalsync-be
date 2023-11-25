@@ -5,6 +5,7 @@ class LeaguesController {
   leagues: IControllerMethod = async (req, res, next) => {
     try {
       const { id, name, country, code, season, team, type, current } = req.query
+
       const params = {
         id: id?.toString(),
         name: name?.toString(),
@@ -16,7 +17,7 @@ class LeaguesController {
         current: current?.toString()
       }
 
-      const leagues = await leaguesService.leagues(params)
+      const leagues = await leaguesService.leagues(params, req.originalUrl)
       return res.json(leagues)
     } catch (error) {
       next(error)

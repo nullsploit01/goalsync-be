@@ -1,12 +1,11 @@
 import { rapidApiClient } from '../../../clients'
-import { CACHE_KEYS } from '../../../constants'
 import { IRapidAPIResponse } from '../../../interfaces/rapid-api'
 import { ICountry, IStatistics, ITeamInfo } from '../../../interfaces/rapid-api/teams'
 import { memoryCacheService } from '../../cache'
 
 class TeamsService {
-  statistics = async (league: string, season: string, team: string) => {
-    const cachedData = memoryCacheService.get(CACHE_KEYS.API.statistics)
+  statistics = async (league: string, season: string, team: string, key: string) => {
+    const cachedData = memoryCacheService.get(key)
     if (cachedData) {
       return cachedData as IRapidAPIResponse<IStatistics>
     }
@@ -18,12 +17,12 @@ class TeamsService {
         team: team
       }
     })
-    memoryCacheService.set(CACHE_KEYS.API.statistics, data)
+    memoryCacheService.set(key, data)
     return data as IRapidAPIResponse<IStatistics>
   }
 
-  info = async (id: string) => {
-    const cachedData = memoryCacheService.get(CACHE_KEYS.API.info)
+  info = async (id: string, key: string) => {
+    const cachedData = memoryCacheService.get(key)
 
     if (cachedData) {
       return cachedData as IRapidAPIResponse<ITeamInfo>
@@ -34,12 +33,12 @@ class TeamsService {
         id
       }
     })
-    memoryCacheService.set(CACHE_KEYS.API.info, data)
+    memoryCacheService.set(key, data)
     return data as IRapidAPIResponse<ITeamInfo>
   }
 
-  seasons = async (team: string) => {
-    const cachedData = memoryCacheService.get(CACHE_KEYS.API.seasons)
+  seasons = async (team: string, key: string) => {
+    const cachedData = memoryCacheService.get(key)
 
     if (cachedData) {
       return cachedData as IRapidAPIResponse<number[]>
@@ -50,19 +49,19 @@ class TeamsService {
         team
       }
     })
-    memoryCacheService.set(CACHE_KEYS.API.seasons, data)
+    memoryCacheService.set(key, data)
     return data as IRapidAPIResponse<number[]>
   }
 
-  countries = async () => {
-    const cachedData = memoryCacheService.get(CACHE_KEYS.API.seasons)
+  countries = async (key: string) => {
+    const cachedData = memoryCacheService.get(key)
 
     if (cachedData) {
       return cachedData as IRapidAPIResponse<number[]>
     }
 
     const { data } = await rapidApiClient.get('/teams/countries')
-    memoryCacheService.set(CACHE_KEYS.API.countries, data)
+    memoryCacheService.set(key, data)
     return data as IRapidAPIResponse<ICountry>
   }
 }

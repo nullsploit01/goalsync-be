@@ -1,12 +1,11 @@
 import { rapidApiClient } from '../../../clients'
-import { CACHE_KEYS } from '../../../constants'
 import { IRapidAPIResponse } from '../../../interfaces/rapid-api'
 import { IStanding } from '../../../interfaces/rapid-api/standings'
 import { memoryCacheService } from '../../cache'
 
 class StandingsService {
-  standings = async (season: string, league: string) => {
-    const cachedData = memoryCacheService.get(CACHE_KEYS.API.standings)
+  standings = async (season: string, league: string, key: string) => {
+    const cachedData = memoryCacheService.get(key)
     if (cachedData) {
       return cachedData as IRapidAPIResponse<IStanding[]>
     }
@@ -17,7 +16,7 @@ class StandingsService {
         league
       }
     })
-    memoryCacheService.set(CACHE_KEYS.API.standings, data)
+    memoryCacheService.set(key, data)
     return data as IRapidAPIResponse<IStanding[]>
   }
 }
