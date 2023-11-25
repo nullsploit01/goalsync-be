@@ -41,6 +41,12 @@ export interface ILeague {
   season: number
 }
 
+export interface ICountry {
+  name: string
+  code: string
+  flag: string
+}
+
 export interface ILineUp {
   formation: string
   played: number
