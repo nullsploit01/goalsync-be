@@ -27,6 +27,11 @@ export interface IStatistics {
   team: ITeam
 }
 
+export interface ITeamInfo {
+  team: ITeam
+  venue: IVenue
+}
+
 export interface ILeague {
   id: number
   name: string
@@ -45,6 +50,20 @@ export interface ITeam {
   id: number
   name: string
   logo: string
+  code: string
+  country: string
+  founded: number
+  national: boolean
+}
+
+export interface IVenue {
+  id: number
+  name: string
+  address: string
+  city: string
+  capacity: number
+  surface: string
+  image: string
 }
 
 export interface IFixtureType {

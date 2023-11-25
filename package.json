@@ -6,7 +6,7 @@
     "build": "tsc",
     "start": "npm run build && node dist/server.js",
     "dev": "export NODE_ENV=local && ts-node-dev src/server.ts --respawn --transpileOnly",
-    "deploy": "firebase deploy --only \"functions,hosting\"",
+    "deploy": "export NODE_ENV=production && firebase deploy --only \"functions,hosting\"",
     "prepare": "husky install"
   },
   "repository": {

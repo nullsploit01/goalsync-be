@@ -1,3 +1,4 @@
+import { RequiredParamsError } from '../../errors/required-params'
 import { teamsServcie } from '../../services'
 import { IControllerMethod } from '../interface'
 
@@ -6,7 +7,7 @@ class TeamsController {
     try {
       const { team, league, season } = req.query
 
-      if (!team || !league || !season) throw new Error('Not all params are provided')
+      if (!team || !league || !season) throw new RequiredParamsError()
 
       const stats = await teamsServcie.statistics(
         league.toString(),
@@ -17,6 +18,19 @@ class TeamsController {
       return res.json(stats)
     } catch (err) {
       next(err)
+    }
+  }
+
+  info: IControllerMethod = async (req, res, next) => {
+    try {
+      const { id } = req.query
+
+      if (!id) throw new RequiredParamsError()
+
+      const teamInfo = await teamsServcie.info(id.toString())
+      return res.json(teamInfo)
+    } catch (error) {
+      next(error)
     }
   }
 }

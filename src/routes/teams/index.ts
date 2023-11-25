@@ -17,4 +17,6 @@ router.get(
   teamsController.statistics
 )
 
+router.get('/info', teamsController.info)
+
 export { router as TeamsRouter }
