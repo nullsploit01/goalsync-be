@@ -33,6 +33,28 @@ class TeamsController {
       next(error)
     }
   }
+
+  seasons: IControllerMethod = async (req, res, next) => {
+    try {
+      const { team } = req.query
+
+      if (!team) throw new RequiredParamsError()
+
+      const teamInfo = await teamsServcie.seasons(team.toString())
+      return res.json(teamInfo)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  countries: IControllerMethod = async (req, res, next) => {
+    try {
+      const countries = await teamsServcie.countries()
+      return res.json(countries)
+    } catch (error) {
+      next(error)
+    }
+  }
 }
 
 export const teamsController = new TeamsController()

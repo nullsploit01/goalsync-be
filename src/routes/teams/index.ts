@@ -7,6 +7,13 @@ import { requestValidator } from '../../middlewares'
 const router = Router()
 
 router.get(
+  '/',
+  [query('id').notEmpty().withMessage('id is required')],
+  requestValidator,
+  teamsController.info
+)
+
+router.get(
   '/statistics',
   [
     query('team').notEmpty().withMessage('team is required'),
@@ -17,6 +24,13 @@ router.get(
   teamsController.statistics
 )
 
-router.get('/info', teamsController.info)
+router.get(
+  '/seasons',
+  [query('team').notEmpty().withMessage('team is required')],
+  requestValidator,
+  teamsController.seasons
+)
+
+router.get('/countries', teamsController.countries)
 
 export { router as TeamsRouter }

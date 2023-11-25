@@ -1,6 +1,6 @@
 import { rapidApiClient } from '../../clients'
 import { IAPIResponse } from '../../interfaces/rapid-api'
-import { IStatistics, ITeamInfo } from '../../interfaces/rapid-api/teams'
+import { IStatistics, ITeam, ITeamInfo } from '../../interfaces/rapid-api/teams'
 
 class TeamsService {
   statistics = async (league: string, season: string, team: string) => {
@@ -23,6 +23,21 @@ class TeamsService {
     })
 
     return data as IAPIResponse<ITeamInfo>
+  }
+
+  seasons = async (team: string) => {
+    const { data } = await rapidApiClient.get('/teams/seasons', {
+      params: {
+        team
+      }
+    })
+
+    return data as IAPIResponse<number[]>
+  }
+
+  countries = async () => {
+    const { data } = await rapidApiClient.get('/teams/countries')
+    return data as IAPIResponse<ITeam>
   }
 }
 
