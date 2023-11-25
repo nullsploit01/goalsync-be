@@ -1,6 +1,6 @@
-import { rapidApiClient } from '../../clients'
-import { IRapidAPIResponse } from '../../interfaces/rapid-api'
-import { IStanding } from '../../interfaces/rapid-api/standings'
+import { rapidApiClient } from '../../../clients'
+import { IRapidAPIResponse } from '../../../interfaces/rapid-api'
+import { IStanding } from '../../../interfaces/rapid-api/standings'
 
 class StandingsService {
   standings = async (season: string, league: string) => {

@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import { leaguesController } from '../../controllers/leagues'
+import { leaguesController } from '../../controllers/'
 
 const router = Router()
 

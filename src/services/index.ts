@@ -1,5 +1,3 @@
-import { leaguesService } from './leagues'
-import { standingsService } from './standings'
-import { teamsServcie } from './teams'
+import { leaguesService, standingsService, teamsServcie } from './api'
 
 export { teamsServcie, leaguesService, standingsService }

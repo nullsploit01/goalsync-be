@@ -1,6 +1,6 @@
 import { RequiredParamsError } from '../../errors/required-params'
 import { IControllerMethod } from '../../interfaces/controllers'
-import { standingsService } from '../../services'
+import { standingsService } from '../../services/'
 
 class StandingsController {
   standings: IControllerMethod = async (req, res, next) => {

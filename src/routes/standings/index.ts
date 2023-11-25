@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { query } from 'express-validator'
 
-import { standingsController } from '../../controllers/standings'
+import { standingsController } from '../../controllers/'
 import { requestValidator } from '../../middlewares'
 
 const router = Router()

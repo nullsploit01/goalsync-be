@@ -1,6 +1,6 @@
-import { rapidApiClient } from '../../clients'
-import { IRapidAPIResponse } from '../../interfaces/rapid-api'
-import { ICountry, IStatistics, ITeamInfo } from '../../interfaces/rapid-api/teams'
+import { rapidApiClient } from '../../../clients'
+import { IRapidAPIResponse } from '../../../interfaces/rapid-api'
+import { ICountry, IStatistics, ITeamInfo } from '../../../interfaces/rapid-api/teams'
 
 class TeamsService {
   statistics = async (league: string, season: string, team: string) => {
