@@ -12,5 +12,6 @@ export const Environment = {
     key: process.env.RAPIDAPI_KEY,
     url: process.env.RAPIDAPI_URL,
     host: process.env.RAPIDAPI_HOST
-  }
+  },
+  allowedOrigins: ['http://localhost:5147', process.env.ALLOWED_ORIGIN]
 }
